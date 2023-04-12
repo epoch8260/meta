@@ -79,7 +79,7 @@ Configs:
         - 64
         - 128
       FUSE_METHOD: SUM
-  w18_v2_small_v2:
+  w18_small_v2:
     WITH_HEAD: true
     STAGE1:
       NUM_MODULES: 1
