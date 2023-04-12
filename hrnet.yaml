@@ -1,0 +1,131 @@
+Collection:
+  - Name: HRNet
+    Metadata:
+      Training Data: ImageNet-1k
+      Architecture:
+        - Batch Normalization
+        - Convolution
+        - ReLU
+        - Residual Connection
+      URL: https://github.com/open-mmlab/mmpretrain/blob/main/configs/hrnet/metafile.yml
+    Paper:
+      URL: https://arxiv.org/abs/1908.07919v2
+      Title: "Deep High-Resolution Representation Learning for Visual Recognition"
+    README: configs/hrnet/README.md
+    Code:
+      URL: https://github.com/open-mmlab/mmpretrain/blob/v0.20.1/mmcls/models/backbones/hrnet.py
+      Version: v0.20.1
+
+
+Weights:
+  w18_small_v1: https://public.dm.files.1drv.com/y4mnL8Wv94E3yFgrOQL-mJJ8w5yU9cFnxmk_cmh4oQx8l73SD0MfNMTnTx3tnXeQvSsiTAAsjScfAnDG9bmvJTgwe1ify58dVTfyxY0WNaaZenwjdtLCa6aJxWdt_ZxjNmQ0DlmIm3w2Tbq17INSX9MMimK_7qI1nxqH9VLBmDkMBdn_B1hNysKGfwEV0MSw8lCYUGFVH3m3UhZhPMET1KHj0_Dw9eaQxRILUKpkVV576c
+  w18_small_v2: https://public.dm.files.1drv.com/y4mL9wtlN6Zy7Dyl7Sr1gzM6ajTjdLv6wmNg82i-AfQJrA_luxkC1T-nrnSzXm4NsnypwNJmOoVwr3qQyzYdymlg5IG-oWhVM545on0E2UVRWjLtlfzKGQB8aqNAsD91YXPfpYT6PGZZDOYuh8n4Zjq0_7kq4l_ww7n2jHgi0mCRef7p7ij6XiZvFck_QdAwKuDCSmec4BjfI3TWdyu4WefNXeiE0ImYfLed34d44XDaTs
+  w18: https://download.openmmlab.com/mmclassification/v0/hrnet/hrnet-w18_3rdparty_8xb32_in1k_20220120-0c10b180.pth
+  w30: https://download.openmmlab.com/mmclassification/v0/hrnet/hrnet-w30_3rdparty_8xb32_in1k_20220120-8aa3832f.pth
+  w32: https://download.openmmlab.com/mmclassification/v0/hrnet/hrnet-w32_3rdparty_8xb32_in1k_20220120-c394f1ab.pth
+  w40: https://download.openmmlab.com/mmclassification/v0/hrnet/hrnet-w40_3rdparty_8xb32_in1k_20220120-9a2dbfc5.pth
+  w44: https://download.openmmlab.com/mmclassification/v0/hrnet/hrnet-w44_3rdparty_8xb32_in1k_20220120-35d07f73.pth
+  w48: https://download.openmmlab.com/mmclassification/v0/hrnet/hrnet-w48_3rdparty_8xb32-ssld_in1k_20220120-d0459c38.pth
+  w64: https://download.openmmlab.com/mmclassification/v0/hrnet/hrnet-w64_3rdparty_8xb32_in1k_20220120-19126642.pth
+
+Configs:
+  w18_small_v1:
+    WITH_HEAD: true
+    STAGE1:
+      NUM_MODULES: 1
+      NUM_RANCHES: 1
+      BLOCK: BOTTLENECK
+      NUM_BLOCKS:
+        - 1
+      NUM_CHANNELS:
+        - 32
+      FUSE_METHOD: SUM
+    STAGE2:
+      NUM_MODULES: 1
+      NUM_BRANCHES: 2
+      BLOCK: BASIC
+      NUM_BLOCKS:
+        - 2
+        - 2
+      NUM_CHANNELS:
+        - 16
+        - 32
+      FUSE_METHOD: SUM
+    STAGE3:
+      NUM_MODULES: 1
+      NUM_BRANCHES: 3
+      BLOCK: BASIC
+      NUM_BLOCKS:
+        - 2
+        - 2
+        - 2
+      NUM_CHANNELS:
+        - 16
+        - 32
+        - 64
+      FUSE_METHOD: SUM
+    STAGE4:
+      NUM_MODULES: 1
+      NUM_BRANCHES: 4
+      BLOCK: BASIC
+      NUM_BLOCKS:
+        - 2
+        - 2
+        - 2
+        - 2
+      NUM_CHANNELS:
+        - 16
+        - 32
+        - 64
+        - 128
+      FUSE_METHOD: SUM
+  w18_v2_small_v2:
+    WITH_HEAD: true
+    STAGE1:
+      NUM_MODULES: 1
+      NUM_RANCHES: 1
+      BLOCK: BOTTLENECK
+      NUM_BLOCKS:
+        - 2
+      NUM_CHANNELS:
+        - 64
+      FUSE_METHOD: SUM
+    STAGE2:
+      NUM_MODULES: 1
+      NUM_BRANCHES: 2
+      BLOCK: BASIC
+      NUM_BLOCKS:
+        - 2
+        - 2
+      NUM_CHANNELS:
+        - 18
+        - 36
+      FUSE_METHOD: SUM
+    STAGE3:
+      NUM_MODULES: 3
+      NUM_BRANCHES: 3
+      BLOCK: BASIC
+      NUM_BLOCKS:
+        - 2
+        - 2
+        - 2
+      NUM_CHANNELS:
+        - 18
+        - 36
+        - 72
+      FUSE_METHOD: SUM
+    STAGE4:
+      NUM_MODULES: 2
+      NUM_BRANCHES: 4
+      BLOCK: BASIC
+      NUM_BLOCKS:
+        - 2
+        - 2
+        - 2
+        - 2
+      NUM_CHANNELS:
+        - 18
+        - 36
+        - 72
+        - 144
+      FUSE_METHOD: SUM
